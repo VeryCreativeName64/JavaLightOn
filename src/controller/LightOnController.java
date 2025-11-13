@@ -1,6 +1,8 @@
 package controller;
 
 import java.awt.Color;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import modell.LightOnModell;
 import view.LightOnGUI;
 
@@ -13,13 +15,22 @@ public class LightOnController {
         this.modell = modell;
         this.view = view;
 
-        modell.newGame();
-        initListeners();
-        updateView();
-        initMenuListeners();
         
+        view.setDefaultCloseOperation(javax.swing.JFrame.DO_NOTHING_ON_CLOSE);
+        view.addWindowListener(new WindowAdapter() {
+            @Override
+            public void windowClosing(WindowEvent e) {
+                exitConfirm();
+            }
+        });
+
+        modell.newGame(); 
+        initListeners();       
+        initMenuListeners();
+        updateView();
     }
 
+    
     private void initListeners() {
         var buttons = view.getButtons();
 
@@ -36,6 +47,19 @@ public class LightOnController {
         }
     }
 
+   
+    private void initMenuListeners() {
+        
+        view.getMnuNewgame().addActionListener(e -> {
+            modell.newGame();
+            updateView();
+        });
+
+        
+        view.getMnuExit().addActionListener(e -> exitConfirm());
+    }
+
+    
     private void updateView() {
         var buttons = view.getButtons();
 
@@ -48,17 +72,27 @@ public class LightOnController {
         }
 
         view.getClickField().setText(String.valueOf(modell.getClickCount()));
+
+        
         if (modell.isAllOn()) {
-            javax.swing.JOptionPane.showMessageDialog(view, "Congratulations! You Win!\n Final number of clicks:"+modell.getClickCount());
+            javax.swing.JOptionPane.showMessageDialog(
+                view, 
+                "Congratulation! You win! \n Final number of clicks: " + modell.getClickCount()
+            );
         }
-
     }
-    
-    private void initMenuListeners() {
-    view.getMnuNewgame().addActionListener(e -> {
-        modell.newGame();
-        updateView();
-    });
-}
 
+    
+    private void exitConfirm() {
+        int answer = javax.swing.JOptionPane.showConfirmDialog(
+                view,
+                "Do you want to exit?",
+                "Confirm exit",
+                javax.swing.JOptionPane.YES_NO_OPTION
+        );
+
+        if (answer == javax.swing.JOptionPane.YES_OPTION) {
+            System.exit(0);
+        }
+    }
 }
