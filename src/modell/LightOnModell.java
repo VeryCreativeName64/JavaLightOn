@@ -5,6 +5,8 @@ public class LightOnModell {
     private boolean[][] grid = new boolean[3][3];
     private int clickCount = 0;
 
+   
+
     public boolean isOn(int i, int j) {
         return grid[i][j];
     }
@@ -51,10 +53,10 @@ public class LightOnModell {
     public void saveGame(java.io.File file) {
     try (java.io.PrintWriter pw = new java.io.PrintWriter(file)) {
 
-        // Mentjük a kattintások számát
+        
         pw.println(clickCount);
 
-        // Mentjük a 3×3 mátrixot
+        
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 pw.print(grid[i][j] ? "1" : "0");
