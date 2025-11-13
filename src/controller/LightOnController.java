@@ -57,6 +57,30 @@ public class LightOnController {
 
         
         view.getMnuExit().addActionListener(e -> exitConfirm());
+        
+        view.getMnuSave().addActionListener(e -> {
+            javax.swing.JFileChooser fc = new javax.swing.JFileChooser();
+            int valasz = fc.showSaveDialog(view);
+
+            if (valasz == javax.swing.JFileChooser.APPROVE_OPTION) {
+                java.io.File file = fc.getSelectedFile();
+                modell.saveGame(file);
+                javax.swing.JOptionPane.showMessageDialog(view, "Game saved successfully!");
+    }
+});
+
+
+        view.getMnuLoad().addActionListener(e -> {
+            javax.swing.JFileChooser fc = new javax.swing.JFileChooser();
+            int valasz = fc.showOpenDialog(view);
+
+            if (valasz == javax.swing.JFileChooser.APPROVE_OPTION) {
+                java.io.File file = fc.getSelectedFile();
+                modell.loadGame(file);
+                updateView();
+                javax.swing.JOptionPane.showMessageDialog(view, "Game loaded successfully!");
+    }
+});
     }
 
     

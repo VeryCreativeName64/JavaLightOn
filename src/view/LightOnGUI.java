@@ -220,6 +220,14 @@ public class LightOnGUI extends javax.swing.JFrame {
         return mnuExit;
     }
 
+    public JMenuItem getMnuLoad() {
+        return mnuLoad;
+    }
+
+    public JMenuItem getMnuSave() {
+        return mnuSave;
+    }
+
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

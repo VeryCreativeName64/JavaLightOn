@@ -48,6 +48,42 @@ public class LightOnModell {
         }
     }
 }
+    public void saveGame(java.io.File file) {
+    try (java.io.PrintWriter pw = new java.io.PrintWriter(file)) {
+
+        // Mentjük a kattintások számát
+        pw.println(clickCount);
+
+        // Mentjük a 3×3 mátrixot
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                pw.print(grid[i][j] ? "1" : "0");
+            }
+            pw.println();
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
+public void loadGame(java.io.File file) {
+    try (java.util.Scanner sc = new java.util.Scanner(file)) {
+
+        clickCount = Integer.parseInt(sc.nextLine());
+
+        for (int i = 0; i < 3; i++) {
+            String sor = sc.nextLine();
+            for (int j = 0; j < 3; j++) {
+                grid[i][j] = (sor.charAt(j) == '1');
+            }
+        }
+
+    } catch (Exception e) {
+        e.printStackTrace();
+    }
+}
+
 
 }
 
