@@ -42,6 +42,8 @@ public class LightOnGUI extends javax.swing.JFrame {
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         mnuNewgame = new javax.swing.JMenuItem();
+        mnuSave = new javax.swing.JMenuItem();
+        mnuLoad = new javax.swing.JMenuItem();
         jSeparator1 = new javax.swing.JPopupMenu.Separator();
         mnuExit = new javax.swing.JMenuItem();
 
@@ -151,6 +153,12 @@ public class LightOnGUI extends javax.swing.JFrame {
 
         mnuNewgame.setText("New Game");
         jMenu1.add(mnuNewgame);
+
+        mnuSave.setText("Save");
+        jMenu1.add(mnuSave);
+
+        mnuLoad.setText("Load");
+        jMenu1.add(mnuLoad);
         jMenu1.add(jSeparator1);
 
         mnuExit.setText("Exit");
@@ -239,7 +247,9 @@ public class LightOnGUI extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPopupMenu.Separator jSeparator1;
     private javax.swing.JMenuItem mnuExit;
+    private javax.swing.JMenuItem mnuLoad;
     private javax.swing.JMenuItem mnuNewgame;
+    private javax.swing.JMenuItem mnuSave;
     private javax.swing.JTextField txtNumbers;
     // End of variables declaration//GEN-END:variables
 }
